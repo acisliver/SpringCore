@@ -6,7 +6,7 @@ import inflearn.core.member.Member;
 import inflearn.core.member.MemberRepository;
 import inflearn.core.member.MemoryMemberRepository;
 
-public class OrderServiceImpl implements OderService{
+public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
