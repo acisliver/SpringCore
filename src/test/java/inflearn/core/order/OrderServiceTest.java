@@ -1,5 +1,6 @@
 package inflearn.core.order;
 
+import inflearn.core.AppConfig;
 import inflearn.core.member.Grade;
 import inflearn.core.member.Member;
 import inflearn.core.member.MemberService;
@@ -10,8 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
+    OrderService orderService = appConfig.orderService();
 
     @Test
     void createOrder() {

@@ -1,12 +1,14 @@
 package inflearn.core.member;
 
+import inflearn.core.AppConfig;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemberServiceTest {
 
-    MemberService service = new MemberServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService service = appConfig.memberService();
 
     @Test
     void join() {
