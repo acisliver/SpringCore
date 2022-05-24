@@ -7,8 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemberServiceTest {
 
-    AppConfig appConfig = new AppConfig();
-    MemberService service = appConfig.memberService();
+    MemberService service;
 
     @Test
     void join() {
