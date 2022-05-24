@@ -1,6 +1,7 @@
 package inflearn.core;
 
-import inflearn.core.discount.FixDiscountPolicy;
+import inflearn.core.discount.DiscountPolicy;
+import inflearn.core.discount.RateDiscountPolicy;
 import inflearn.core.member.MemberService;
 import inflearn.core.member.MemberServiceImpl;
 import inflearn.core.member.MemoryMemberRepository;
@@ -21,7 +22,8 @@ public class AppConfig {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    private FixDiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+    private DiscountPolicy discountPolicy() {
+//        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
