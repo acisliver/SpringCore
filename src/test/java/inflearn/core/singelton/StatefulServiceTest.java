@@ -18,16 +18,15 @@ class StatefulServiceTest {
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
         // ThreadA: A 사용자가 10000원 주문
-        statefulService1.order("userA", 100000);
+        int order = statefulService1.order("userA", 10000);
 
         // ThreadB: B 사용자가 10000원 주문
         statefulService2.order("userB", 5000);
 
         // ThreadA: A 사용자가 주문 금액 조회
-        int price = statefulService1.getPrice();
-        System.out.println("price = " + price);
+        System.out.println("price = " + order);
 
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(5000);
+        Assertions.assertThat(order).isEqualTo(10000);
     }
 
     static class TestConfig {
