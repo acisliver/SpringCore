@@ -1,11 +1,9 @@
 package inflearn.core.order;
 
 import inflearn.core.discount.DiscountPolicy;
-import inflearn.core.discount.FixDiscountPolicy;
-import inflearn.core.discount.RateDiscountPolicy;
 import inflearn.core.member.Member;
 import inflearn.core.member.MemberRepository;
-import inflearn.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -13,6 +11,7 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
