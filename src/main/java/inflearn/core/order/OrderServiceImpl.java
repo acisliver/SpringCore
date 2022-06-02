@@ -12,7 +12,7 @@ public class OrderServiceImpl implements OrderService {
     private DiscountPolicy discountPolicy;
 
     // 세터 주입
-    @Autowired
+    @Autowired(required = false)
     public void setMemberRepository(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
