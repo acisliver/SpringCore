@@ -8,8 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OrderServiceImpl implements OrderService {
 
     // 인터페이스뿐만 아니라 구현 클래스도 의존하고 있다. -> DIP, OCP 위반
-    @Autowired private MemberRepository memberRepository;
-    @Autowired private DiscountPolicy discountPolicy;
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     // 생성자가 하나라면 @Autowired가 없어도 final로 선언된 빈을 등록해준다
 //    @Autowired
