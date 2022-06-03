@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService {
 
     // 생성자가 하나라면 @Autowired가 없어도 final로 선언된 빈을 등록해준다
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
