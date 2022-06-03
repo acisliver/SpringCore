@@ -11,17 +11,11 @@ public class OrderServiceImpl implements OrderService {
     private MemberRepository memberRepository;
     private DiscountPolicy discountPolicy;
 
-    @Autowired
-    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
-
     // 생성자가 하나라면 @Autowired가 없어도 final로 선언된 빈을 등록해준다
-//    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
         this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
+        this.discountPolicy = rateDiscountPolicy;
     }
 
     @Override
