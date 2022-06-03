@@ -1,5 +1,6 @@
 package inflearn.core.order;
 
+import inflearn.core.annotation.MainDiscountPolicy;
 import inflearn.core.discount.DiscountPolicy;
 import inflearn.core.member.Member;
 import inflearn.core.member.MemberRepository;
@@ -14,7 +15,7 @@ public class OrderServiceImpl implements OrderService {
 
     // 생성자가 하나라면 @Autowired가 없어도 final로 선언된 빈을 등록해준다
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
