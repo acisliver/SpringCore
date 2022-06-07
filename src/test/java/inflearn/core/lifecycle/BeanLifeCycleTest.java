@@ -23,7 +23,8 @@ public class BeanLifeCycleTest {
         // 자동으로 종료 메서드를 추론해서 호출해준다
         // destroyMethod를 적지 않아도 동작한다.
         // 일부러 사용하지 않을 경우 빈 문자열을 넣어주면 된다.
-        @Bean(initMethod = "init", destroyMethod = "close")
+        // @Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://inflearn-core.dev");

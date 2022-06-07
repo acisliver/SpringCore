@@ -1,5 +1,8 @@
 package inflearn.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class NetworkClient {
 
     private String url;
@@ -26,9 +29,9 @@ public class NetworkClient {
         System.out.println("close " + url);
     }
 
-    // 스프링에 의존하지 않는다.
-    // 코드가 아니라 설정 정보를 사용하기 때문에 코드를 고칠 수 없는 외부 라이브러리에도 적용할 수 있다.
-    // 의존관계 주입이 끝나면 호출
+    // 스프링 기술이 아니라 자바 기술이다
+    // 유일한 단점은 외부 라이브러리에는 적용하지 못한다. -> 이때는 @Bean의 기능을 사용
+    @PostConstruct
     public void init() throws Exception {
         System.out.println("NetworkClient.init");
         connect();
@@ -36,6 +39,7 @@ public class NetworkClient {
     }
 
     // 빈 종료 시 호출
+    @PreDestroy
     public void close() throws Exception {
         System.out.println("NetworkClient.close");
         disconnect();
