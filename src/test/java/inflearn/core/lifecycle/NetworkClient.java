@@ -1,9 +1,6 @@
 package inflearn.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-public class NetworkClient implements InitializingBean, DisposableBean {    // 단점: 스프링 전용 인터페이스에 의존. 거의 사용 X
+public class NetworkClient {
 
     private String url;
 
@@ -29,16 +26,18 @@ public class NetworkClient implements InitializingBean, DisposableBean {    // �
         System.out.println("close " + url);
     }
 
+    // 스프링에 의존하지 않는다.
+    // 코드가 아니라 설정 정보를 사용하기 때문에 코드를 고칠 수 없는 외부 라이브러리에도 적용할 수 있다.
     // 의존관계 주입이 끝나면 호출
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    public void init() throws Exception {
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
     // 빈 종료 시 호출
-    @Override
-    public void destroy() throws Exception {
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
